@@ -79,8 +79,12 @@ function Login(props) {
 
     async function login(){
         try {
-			await firebase.login(email, password)
-			props.history.replace('/productos')
+            await firebase.login(email, password)
+            if(email==='admin@admin.com'){
+                props.history.replace('/lista-pedidos')
+            }else{
+                props.history.replace('/compras')
+            }
 		} catch(error) {
 			alert(error.message)
 		}

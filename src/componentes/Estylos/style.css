@@ -25,10 +25,10 @@
 
 @media (max-width: 650px) {
     .productos {
-        column-count: 2
+        column-count: 2;
     }
     .frutas {
-        height: 180px;
+        height: 195px;
         margin-bottom: 0 4px;
     }
 }

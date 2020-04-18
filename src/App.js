@@ -6,6 +6,7 @@ import ListaPedidos from './componentes/ListaPedidos/ListaPedidos';
 import './componentes/Estylos/style.css'
 import Login from './componentes/Login/Login';
 import Productos from './componentes/Productos/Productos'
+import Registro from './componentes/Registro/Registro';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/lista-pedidos" component={ListaPedidos} />
           <Route exact path="/productos" component={Productos}/>
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/registro" component={Registro}/>
         </Switch>
       </Router>
     </div>

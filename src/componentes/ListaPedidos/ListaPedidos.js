@@ -1,9 +1,24 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import firebase from '../firebase'
 
-export default function ListaPedidos() {
+export default function ListaPedidos(props) {
+
+    if (!firebase.getCurrentUsername()) {
+		alert('Please login first')
+		props.history.replace('/login')
+		return null
+	}
+
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mt-3">
+                <div className="col-md-12">
+                    <NavLink className="btn btn-secondary mr-2" to="/lista-pedidos">Pedidos</NavLink>
+                    <NavLink className="btn btn-secondary" to="/productos">Productos</NavLink>
+                </div>
+            </div>
+            <div className="row mt-3">
                 <div className="col-md-12">
                     <div className="card-columns">
                         <div className="card">
