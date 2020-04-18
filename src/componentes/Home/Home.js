@@ -13,7 +13,7 @@ export default function Home() {
             <div className="App" style={{ backgroundImage: `url(${imageUrl})` }}>
                 <Header/>
                 <div className="hola">
-                    <Link className="btn btn-danger" to="/compras">HACER UN PEDIDO</Link>
+                    <Link className="btn btn-primary" to="/compras">HACER UN PEDIDO</Link>
                 </div>
             </div>
         </Fragment>

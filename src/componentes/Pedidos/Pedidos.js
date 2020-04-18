@@ -4,9 +4,10 @@ import '../Estylos/style.css'
 import firebase from '../firebase'
 
 let carrito = [];
-let subtotal = [];
+let subtotal = 0;
 
 export default function Pedidos() {
+    // console.log(subtotal);
     
     const [productos, setProductos] = useState([])
     const [proSelec, setproSelec] = useState('')
@@ -71,9 +72,8 @@ export default function Pedidos() {
                                     <table className="table table-responsive">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
                                                 <th scope="col">Producto</th>
-                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Cant</th>
                                                 <th scope="col">Precio</th>
                                                 <th scope="col">X</th>
                                             </tr>
@@ -85,7 +85,7 @@ export default function Pedidos() {
                                                     
                                                     
                                                     <tr key={llave}>
-                                                        <th scope="row">{llave + 1}</th>
+                                                        {/* <th scope="row">{llave + 1}</th> */}
                                                         <td>{elementos.nombreProducto}</td>
                                                         <td>{elementos.cantidadProducto} kg</td>
                                                         <td>S/{(elementos.precioProducto * elementos.cantidadProducto).toFixed(2)}</td>
@@ -98,15 +98,15 @@ export default function Pedidos() {
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td> </td>
-                                                <td> </td>
-                                                <td> </td>
-                                                <td>Total:</td>
+                                                {/* <td> </td> */}
+                                                <td><button className="btn btn-primary shadow" onClick={total}>Total</button></td>
                                                 <td>
                                                     {
-                                                        
+                                                        subtotal.toFixed(2)
                                                     }
                                                 </td>
+                                                <td> </td>
+                                                <td> </td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -142,8 +142,16 @@ export default function Pedidos() {
     function mandarPedido() {
         try{
             firebase.crearPedido(carrito)
+            setproSelec('')
+            setprecioSelec('')
+            setcantSelect('')
         }catch(error){
             alert(error.message)
         }
+    }
+    async function total(){
+        await carrito.map(elem=>{
+            subtotal=(elem.precioProducto*elem.cantidadProducto)+subtotal
+        })
     }
 }
