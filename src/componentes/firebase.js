@@ -57,7 +57,7 @@ class Firebase {
     return this.db.collection(`productos`).get()
   }
   crearPedido(carrito){
-    return this.db.doc(`pedidos/${this.auth.currentUser.uid + this.}`).set({
+    return this.db.doc(`pedidos/${this.auth.currentUser.uid}`).set({
       carrito,
       usuario:this.auth.currentUser.uid
     })
